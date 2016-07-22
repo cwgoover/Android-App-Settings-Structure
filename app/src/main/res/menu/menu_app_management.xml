@@ -1,0 +1,24 @@
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <item android:id="@+id/action_search"
+        android:title="Search"
+        android:icon="@android:drawable/ic_menu_search"
+        android:showAsAction="collapseActionView|ifRoom"
+        android:actionViewClass="android.widget.SearchView" />
+
+    <item android:id="@+id/menu_sort"
+        android:title="@string/menu_app_sort_name"
+        android:orderInCategory="4"
+        android:showAsAction="never" />
+
+    <group android:id="@+id/menu_group_gms" >
+        <item android:id="@+id/menu_disable_gms"
+            android:title="@string/menu_app_disable_gms"
+            android:orderInCategory="5"
+            android:showAsAction="never" />
+
+        <item android:id="@+id/menu_enable_gms"
+            android:title="@string/menu_app_enable_gms"
+            android:orderInCategory="6"
+            android:showAsAction="never" />
+    </group>
+</menu>

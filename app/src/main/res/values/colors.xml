@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <!-- Default colors -->
+    <color name="default_background_color">#E2E2E2</color>
+    <color name="default_text_color">#333333</color>
+    <color name="holo_blue_light">#ff33b5e5</color>
+    
+    <color name="blueviolet">#8a2be2</color><!--紫罗兰蓝色 --> 
+    <color name="lightskyblue">#87cefa</color><!--亮天蓝色 --> 
+    <color name="skyblue">#87ceeb</color><!--天蓝色 --> 
+    <color name="gray">#808080</color><!--灰色 --> 
+    <color name="olive">#808000</color><!--橄榄色 --> 
+    <color name="gainsboro">#dcdcdc</color><!--淡灰色 -->
+    <color name="wheat">#f5deb3</color><!-- 浅黄色 -->
+    <color name="salmon">#fa8072</color> <!-- 鲜肉色 -->
+    <color name="beige">#f5f5dc</color><!-- 米色 -->
+    <color name="darkorange">#ff8c00</color><!-- 暗桔黄色 -->	
+    <color name="coral">#ff7f50</color><!-- 珊瑚色 -->
+    <color name="orange">#ffa500</color><!-- 橙色 -->
+    <color name="yellow">#ffff00</color><!-- 黄色 -->
+    <color name="green">#719821</color><!-- 嫩绿色 -->
+    <color name="lightgreen">#CCFF00</color><!-- 亮绿色 -->
+
+    <color name="g3wGreen">#ff7e9924</color>
+    <color name="half_transparent">#80000000</color>
+    <color name="transparent">#00000000</color>
+    <color name="gray1">#ff888888</color>
+    <color name="darkGray">#ff444444</color><!-- 深灰色 -->
+    <color name="lightGray">#ffcccccc</color>
+    <color name="firstgray">#555555</color><!-- 一级灰色 -->
+    
+    <color name="yellow_flower">#DAA569</color><!-- yellow flower color -->
+
+	<!-- for app launch UI -->
+    <color name="list_selector_background">#8a2be2</color><!--紫罗兰蓝色 --> 
+    <color name="list_header_bg">#FFAD7FA8</color>
+
+    <!-- Time Report Detail Item -->
+    <color name="detail_item_time_text_color">#BB000000</color>
+    <color name="first_part_color">#99204A87</color><!-- 60% blue -->
+    <color name="last_part_color">#99EDB500</color><!-- 60% yellow -->
+    <color name="graph_single_bar_bg">#33000000</color><!-- 30% dark -->
+    <color name="graph_separator_color">#99000000</color><!-- 60% dark -->
+    <color name="grap_text_color">#ff555555</color>
+    <color name="graph_detail_action_color">#99f4511e</color><!-- 60% orange 600 -->
+
+    <color name="system_accent_color">#ff80CBC4</color><!-- deep teal 200 -->
+    <color name="system_warning_color">#fff4511e</color><!-- deep orange 600 -->
+
+    <!-- for App Management Tabs -->
+    <color name="app_manage_tab_background">#FF3C3C3C</color>
+    <color name="app_manage_tab_text_color">#FFFFFFFF</color>
+    <color name="app_manage_tab_line_color">#FF6F8FC7</color>
+    <color name="app_manage_tab_div_color">#FF636363</color>
+</resources>

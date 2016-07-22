@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2" >
+
+    <!-- Settings -->
+    <string name="app_name">App Management Demo</string>
+    <string name="app_management">APP Management</string>
+    <string name="settings_sort">Sort By</string>
+
+    <!-- content -->
+    <string name="loading">Loading&#8230;</string>
+
+    <!-- App Management -->
+    <string name="app_manage_safetylegal_activity_loading">Loading\u2026</string>
+    <!-- [CHAR LIMIT=25] Text shown when there are no applications to display. -->
+    <string name="no_applications">No apps.</string>
+    <string name="filter_apps_system">SYSTEM</string>
+    <string name="filter_apps_third_party">DOWNLOAD</string>
+    <string name="filter_apps_disabled">DISABLED</string>
+
+    <string name="menu_app_sort_default">Default Sort</string>
+    <string name="menu_app_sort_name">Sort by Name</string>
+    <string name="menu_app_disable_gms">Disable GMS Apps</string>
+    <string name="menu_app_enable_gms">Enable GMS Apps</string>
+
+</resources>
