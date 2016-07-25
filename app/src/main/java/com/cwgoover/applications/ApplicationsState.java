@@ -312,7 +312,7 @@ public class ApplicationsState {
 
                 // get all the filtered list for different tab
                 if ((filter == null || filter.filterApp(info))
-                        && !"com.jrdcom.perf".equals(info.packageName)/*filter myself out*/) {
+                        && !"com.cwgoover.applications".equals(info.packageName)/*filter myself out*/) {
                     synchronized (mEntriesMap) {
                         if (DEBUG_LOCKING) Log.v(TAG, "rebuild acquired lock");
                         AppEntry entry = getEntryLocked(info);

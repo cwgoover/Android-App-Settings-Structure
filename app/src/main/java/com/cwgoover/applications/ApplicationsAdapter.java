@@ -146,7 +146,11 @@ public class ApplicationsAdapter extends BaseAdapter implements Filterable,
                                 != PackageManager.COMPONENT_ENABLED_STATE_DISABLED_USER) {
                         newState = PackageManager.COMPONENT_ENABLED_STATE_DISABLED_USER;
                     }
-                    mPm.setApplicationEnabledSetting(curPkgName, newState, PackageManager.DONT_KILL_APP);
+                    try {
+                        mPm.setApplicationEnabledSetting(curPkgName, newState, PackageManager.DONT_KILL_APP);
+                    } catch (SecurityException e) {
+                        Log.e(TAG, "Error: set state to system fail! [" + e.toString() + "]");
+                    }
                     handler.post(new Runnable() {
                         @Override public void run() {
                             mListener.onToggleClick();

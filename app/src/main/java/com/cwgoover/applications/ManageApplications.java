@@ -249,7 +249,11 @@ public class ManageApplications extends Activity implements ToggleClickListener,
                         if (mEnable) {
                             newState = PackageManager.COMPONENT_ENABLED_STATE_DEFAULT;
                         }
-                        mPM.setApplicationEnabledSetting(curPkg, newState, PackageManager.DONT_KILL_APP);
+                        try {
+                            mPM.setApplicationEnabledSetting(curPkg, newState, PackageManager.DONT_KILL_APP);
+                        } catch (SecurityException e) {
+                            Log.e(TAG, "Error: set GMS state to system fail! [" + e.toString() + "]");
+                        }
                     }
                 }
             }
