@@ -314,6 +314,11 @@ public class ManageApplications extends Activity implements ToggleClickListener,
             }
         }
 
+        /**
+         * create main data view and visibly loading container.
+         * @param inflater
+         * @return main data view
+         */
         public View buildPager(LayoutInflater inflater) {
             if (mRootView != null) {
                 return mRootView;

@@ -9,6 +9,9 @@ import com.cwgoover.applications.ManageApplications.PagerInfo;
 
 import java.util.ArrayList;
 
+/**
+ * This class used to create ViewPagerTabButton for each tab.
+ */
 public class FixedTabsAdapter implements TabsAdapter {
 
     private final Activity mActivity;

@@ -11,6 +11,12 @@ import com.cwgoover.applications.ManageApplications.PagerInfo;
 
 import java.util.ArrayList;
 
+/**
+ * This class used to extend PagerAdapter interface and create ViewPager
+ * in instantiateItem method.
+ *
+ * Note that: getCount() used in FixedTabsView class
+ */
 public class ApplicationsPagerAdapter extends PagerAdapter {
 
     public static final String TAG = ManageApplications.TAG + ".pager";

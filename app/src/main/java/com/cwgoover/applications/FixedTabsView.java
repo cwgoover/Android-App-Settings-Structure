@@ -8,12 +8,10 @@ import android.util.AttributeSet;
 import android.view.View;
 import android.widget.LinearLayout;
 
-import com.cwgoover.applications.R;
-
 import java.util.ArrayList;
 
 /**
- * All the user interaction is managed by this class:
+ * All the user interaction is managed by this View:
  *   * user touches ViewPagerTabButton (setOnClickListener)
  *   * user swipes ViewPager (OnPageChangeListener)
  */
