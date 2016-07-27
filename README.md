@@ -3,7 +3,7 @@ This is a demo about Android4.4 App Settings' structure. I improve it to add gen
 
 ### Interface:
 
-![screenshot]()
+<img src="https://github.com/cwgoover/Android-App-Settings-Structure/blob/master/screenshot.png?raw=true" width="450" />
 
 ### Function:
 
@@ -12,4 +12,4 @@ This is a demo about Android4.4 App Settings' structure. I improve it to add gen
 * Search any of applications by its label or package name.
 * Disable/Enable all the GMS applications with one click in the Settings.
 
-`Note that`: If you want to normal running it, this app needs **SYSTEM PERMISSION**.
+`**Note that**`: If you want to normal running it, this app needs **SYSTEM PERMISSION**.
