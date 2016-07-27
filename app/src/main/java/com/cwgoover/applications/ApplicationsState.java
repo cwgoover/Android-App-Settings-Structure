@@ -46,7 +46,6 @@ public class ApplicationsState {
 
     public static String normalize(String str) {
         String tmp = Normalizer.normalize(str, Form.NFD);
-        Log.d(TAG, "tcao: normalize--> tmp=" + tmp);
         return REMOVE_DIACRITICALS_PATTERN.matcher(tmp)
                     .replaceAll("").toLowerCase();
     }
@@ -56,7 +55,7 @@ public class ApplicationsState {
         final long id;
         String label;
         String packageName;
-        // TODO: check whether necessary?
+        // Used for ApplicationsAdapter.applyPrefixFilter to filter out keywords
         String normalizedLabel;
         Drawable icon;
         // Need to synchronize on 'this' for the following.
@@ -139,10 +138,7 @@ public class ApplicationsState {
 
         @Override
         public boolean filterApp(ApplicationInfo info) {
-            if ((info.flags & ApplicationInfo.FLAG_SYSTEM) != 0) {
-                return true;
-            }
-            return false;
+            return (info.flags & ApplicationInfo.FLAG_SYSTEM) != 0;
         }
     };
 
@@ -169,10 +165,7 @@ public class ApplicationsState {
 
         @Override
         public boolean filterApp(ApplicationInfo info) {
-            if (!info.enabled && !info.packageName.contains(GOOGLE_APP_PACKAGE)) {
-                return true;
-            }
-            return false;
+            return !info.enabled && !info.packageName.contains(GOOGLE_APP_PACKAGE);
         }
     };
 
@@ -185,7 +178,9 @@ public class ApplicationsState {
 
         // Rebuilding of app list. Synchronized on mRebuildSync.
         final Object mRebuildSync = new Object();
-        boolean mRebuildRequested;      // TODO: check what's mean?
+        // ApplicationsAdapter calls rebuild method here, the mRebuildRequested will be set as true.
+        // It represents the process of the rebuild requested is not over yet.
+        boolean mRebuildRequested;
         boolean mRebuildAsync;
         AppFilter mRebuildFilter;
         Comparator<AppEntry> mRebuildComparator;
@@ -216,7 +211,6 @@ public class ApplicationsState {
                 if (!mResumed) {
                     mResumed = true;
                     mSessionsChanged = true;
-                    Log.d(TAG, "tcao: resume: mResumed=" +mResumed);
                     doResumeIfNeededLocked();
                 }
             }
@@ -230,7 +224,6 @@ public class ApplicationsState {
                     mResumed = false;
                     mSessionsChanged = true;
                     mBackgroundHandler.removeMessages(BackgroundHandler.MSG_REBUILD_LIST, this);
-                    Log.d(TAG, "tcao: pause  mResumed="+mResumed);
                     doPauseIfNeededLocked();
                 }
             }
@@ -272,6 +265,7 @@ public class ApplicationsState {
                     try {
                         mRebuildSync.wait(waitend - now);
                     } catch (InterruptedException e){
+                        // Do nothing
                     }
                 }
                 mRebuildAsync = true;
@@ -554,6 +548,7 @@ public class ApplicationsState {
             try {
                 mEntriesMap.wait(1);
             } catch (InterruptedException e) {
+                // Do nothing
             }
         }
     }
@@ -571,7 +566,6 @@ public class ApplicationsState {
             return;
         }
         mResumed = true;
-        Log.d(TAG, "doResumeIfNeededLocked: mResumed="+mResumed);
         mApplications = mPm.getInstalledApplications(mRetrieveFlags);
         if (mApplications == null) {
             mApplications = new ArrayList<ApplicationInfo>();
@@ -582,11 +576,9 @@ public class ApplicationsState {
     }
 
     void doPauseIfNeededLocked() {
-        Log.d(TAG, "tcao: doPauseIfNeededLocked: mResumed=" +mResumed);
         if (!mResumed) {
             return;
         }
-        Log.d(TAG, "tcao: doPauseIfNeededLocked: never do:"+ this.toString());
         for (int i = 0; i < mSessions.size(); i++) {
             if (mSessions.get(i).mResumed) {
                 return;

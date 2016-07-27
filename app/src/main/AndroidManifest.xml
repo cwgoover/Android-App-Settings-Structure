@@ -1,14 +1,17 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.cwgoover.applications"
-    android:versionCode="1"
-    android:versionName="1.0" >
+    package="com.cwgoover.applications" >
 
-    <!-- android:sharedUserId="android.uid.system" -->
+    <!--android:sharedUserId="android.uid.system"-->
 
-    <uses-sdk
-        android:minSdkVersion="16"
-        android:targetSdkVersion="19" />
+    <!-- It's always overridden by the value specified in the build.gradle script-->
+    <!--android:versionCode="1"
+    android:versionName="1.0"-->
+
+    <!-- It's always overridden by the value specified in the build.gradle script-->
+    <!--<uses-sdk-->
+        <!--android:minSdkVersion="16"-->
+        <!--android:targetSdkVersion="19" />-->
 
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
     <uses-permission android:name="android.permission.INTERNET" />
@@ -25,8 +28,17 @@
             android:theme="@style/MyDarkTheme">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
+                <!-- Warning:(19, 6) App is not indexable by Google Search;
+                 consider adding at least one Activity with an ACTION-VIEW
+                  intent-filler. -->
+                <action android:name="android.intent.action.VIEW" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
+                <category android:name="android.intent.category.DEFAULT" />
+                <category android:name="android.intent.category.BROWSABLE" />
+
+                <!--https://developer.android.com/training/app-indexing/deep-linking.html-->
+                <data android:scheme="http" />
             </intent-filter>
         </activity>
     </application>

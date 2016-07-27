@@ -1,8 +1,5 @@
 package com.cwgoover.applications;
 
-import java.util.ArrayList;
-import java.util.Comparator;
-
 import android.content.Context;
 import android.content.pm.PackageManager;
 import android.os.AsyncTask;
@@ -20,9 +17,11 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.ToggleButton;
 
-import com.cwgoover.applications.R;
 import com.cwgoover.applications.ApplicationsState.AppEntry;
 import com.cwgoover.applications.ManageApplications.PagerInfo;
+
+import java.util.ArrayList;
+import java.util.Comparator;
 
 public class ApplicationsAdapter extends BaseAdapter implements Filterable,
             ApplicationsState.Callbacks, AbsListView.RecyclerListener, View.OnClickListener {
@@ -33,7 +32,7 @@ public class ApplicationsAdapter extends BaseAdapter implements Filterable,
     // sort order that can be changed through the menu can be sorted alphabetically
     // or size(descending)
     public static final int MENU_OPTIONS_BASE = 0;
-    public static final int FILTER_APPS_SYSTEM = MENU_OPTIONS_BASE + 0;
+    public static final int FILTER_APPS_SYSTEM = MENU_OPTIONS_BASE;
     public static final int FILTER_APPS_THIRD_PARTY = MENU_OPTIONS_BASE + 1;
     public static final int FILTER_APPS_DISABLED = MENU_OPTIONS_BASE + 2;
 
@@ -135,12 +134,11 @@ public class ApplicationsAdapter extends BaseAdapter implements Filterable,
     @Override
     public void onClick(View v) {
         if (v instanceof ToggleButton) {
-            final View btn = v;
+            final String curPkgName = mEntries.get((Integer)v.getTag(R.id.checkbox)).packageName;
             final Handler handler = new Handler(mContext.getMainLooper());
             (new AsyncTask<Void, Void, Void>() {
                 @Override
                 protected Void doInBackground(Void... params) {
-                    String curPkgName = mEntries.get((Integer)btn.getTag(R.id.checkbox)).packageName;
                     int newState = PackageManager.COMPONENT_ENABLED_STATE_DEFAULT;
                     if (mPm.getApplicationEnabledSetting(curPkgName)
                                 != PackageManager.COMPONENT_ENABLED_STATE_DISABLED_USER) {
@@ -215,7 +213,6 @@ public class ApplicationsAdapter extends BaseAdapter implements Filterable,
     public void pause() {
         if (mResumed) {
             mResumed = false;
-            Log.d(TAG, "tcao: pause: filterMode="+ mFilterMode + ", mResumed="+mResumed);
             mSession.pause();
         }
     }
@@ -282,7 +279,7 @@ public class ApplicationsAdapter extends BaseAdapter implements Filterable,
                 String nlabel = entry.getNormalizedLabel();
                 if (nlabel.startsWith(prefixStr) /*|| nlabel.indexOf(prefixStr) != -1*/
                         || entry.packageName.startsWith(prefixStr)
-                        || entry.packageName.indexOf(prefixStr) != -1) {
+                        || entry.packageName.contains(prefixStr)) {
                     newEntries.add(entry);
                 }
             }
